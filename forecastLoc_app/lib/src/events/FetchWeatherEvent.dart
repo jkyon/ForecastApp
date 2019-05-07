@@ -9,5 +9,5 @@ class FetchWeatherEvent extends WeatherEvent {
   final String latitude;
   final String cityName;
   FetchWeatherEvent({this.cityName, this.longitude, this.latitude})
-      : super([longitude, latitude]);
+      : super([cityName,longitude, latitude]);
 }
