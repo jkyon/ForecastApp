@@ -4,6 +4,7 @@ import 'package:forecast_app/src/util/constants.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 
 class WeatherInfo extends StatelessWidget {
   final String forecastIcon;
@@ -25,30 +26,33 @@ class WeatherInfo extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    final Function wp = Screen(MediaQuery.of(context).size).wp;
+
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.only(top: 40),
+      margin: EdgeInsets.only(top: wp(5)),
       child: Column(
         children: <Widget>[
           Text(
             cityName,
             style: TextStyle(
-                fontSize: 30, color: Colors.white, fontWeight: FontWeight.w600),
+                fontSize: wp(10), color: Colors.white, fontWeight: FontWeight.w600),
           ),
           Text(
             DateFormat.yMMMMd("en_US").format(DateTime.now()),
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w300),
+                fontSize: wp(5), color: Colors.white, fontWeight: FontWeight.w300),
           ),
           Icon(
             parameterIcons[forecastIcon],
-            size: 200.0,
+            size: wp(40),
             color: Colors.white,
           ),
           Text(
             forecastDescription,
             style: TextStyle(
-                fontSize: 30, color: Colors.white, fontWeight: FontWeight.w500),
+                fontSize: wp(8), color: Colors.white, fontWeight: FontWeight.w500),
           ),
           Column(
             children: <Widget>[
@@ -61,14 +65,14 @@ class WeatherInfo extends StatelessWidget {
                   Text(
                     temperature,
                     style: TextStyle(
-                        fontSize: 100,
+                        fontSize: wp(20),
                         color: Colors.white,
                         fontWeight: FontWeight.w600),
                   ),
                   Icon(
                     MdiIcons.temperatureCelsius,
                     color: Colors.white,
-                    size: 50,
+                    size: wp(10),
                   ),
                   Expanded(
                     child: Text(""),
@@ -83,7 +87,7 @@ class WeatherInfo extends StatelessWidget {
             children: <Widget>[
               RowIncon(
                 fontWeight: FontWeight.w300,
-                fontSize: 30,
+                fontSize: wp(10),
                 icon: Icon(
                   FontAwesome.getIconData('thermometer-empty'),
                   color: Colors.white,
@@ -94,7 +98,7 @@ class WeatherInfo extends StatelessWidget {
               ),
               RowIncon(
                 fontWeight: FontWeight.w300,
-                fontSize: 30,
+                fontSize: wp(10),
                 icon: Icon(
                   FontAwesome.getIconData('thermometer-full'),
                   color: Colors.white,
@@ -105,7 +109,7 @@ class WeatherInfo extends StatelessWidget {
               ),
               RowIncon(
                 fontWeight: FontWeight.w300,
-                fontSize: 30,
+                fontSize: wp(10),
                 icon: Icon(
                   MdiIcons.water,
                   color: Colors.white,

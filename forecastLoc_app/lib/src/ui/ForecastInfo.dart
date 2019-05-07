@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/ui/ColumnIcon.dart';
+import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 
 class ForecastInfo extends StatelessWidget {
   final List<Forecast> forecast;
@@ -10,20 +11,22 @@ class ForecastInfo extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final Function wp = Screen(MediaQuery.of(context).size).wp;
+    final Function hp = Screen(MediaQuery.of(context).size).hp;
+
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.only(top: 50),
+      margin: EdgeInsets.only(top: hp(2)),
       child: Column(
         children: <Widget>[
           Text(
             "Next 5 days forecast",
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w400),
+                fontSize: wp(7), color: Colors.white, fontWeight: FontWeight.w400),
           ),
           Text(""),
-          Text(""),
           Wrap(
-            spacing: 20.0,
+            spacing: wp(4),
             children: <Widget>[
               ColumnIcon(
                 dayOfWeek: forecast[0].dayOfWeek,
