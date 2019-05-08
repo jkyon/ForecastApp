@@ -7,8 +7,11 @@ import 'package:meta/meta.dart';
 
 class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
   final WeatherRepository weatherRepository;
+
   WeatherBloc({@required this.weatherRepository});
+
   WeatherState get initialState => WeatherEmptyState();
+  
   @override
   Stream<WeatherState> mapEventToState(
     WeatherState currentState,

@@ -21,6 +21,9 @@ const Map<String, dynamic> parameterIcons = {
   '50n': MdiIcons.weatherFog,
   '50d': MdiIcons.weatherFog,
 };
+
+
+
 const Map<String, List<Color>> gradiendColor = {
   '00d': [
     Color(0xff193f6e),
