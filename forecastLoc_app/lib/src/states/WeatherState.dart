@@ -3,6 +3,7 @@ import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/models/Weather.dart';
 import 'package:meta/meta.dart';
 
+@immutable
 abstract class WeatherState extends Equatable {
   WeatherState([Iterable props]) : super(props);
 }
