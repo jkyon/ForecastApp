@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:forecast_app/src/ui/GradientBackground.dart';
 
-class LoadingWeatherView extends StatelessWidget {
+class LoadingWeatherView extends StatefulWidget {
 
   const LoadingWeatherView({Key key,}) : super(key: key);
 
+  @override
+  _LoadingWeatherViewState createState() => _LoadingWeatherViewState();
+}
+
+class _LoadingWeatherViewState extends State<LoadingWeatherView> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
@@ -12,7 +17,7 @@ class LoadingWeatherView extends StatelessWidget {
       Center(
         child: CircularProgressIndicator(
             backgroundColor: Colors.white,
-            valueColor: new AlwaysStoppedAnimation<Color>(Colors.white)),
+            ),
       )
     ]);
   }
