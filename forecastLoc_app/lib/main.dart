@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:forecast_app/src/IoC/WeatherAppIoC.dart';
 import 'package:forecast_app/src/blocs/ThemeBloc.dart';
 import 'package:forecast_app/src/models/LatLng.dart';
-import 'package:forecast_app/src/repositories/WeatherRepository.dart';
 import 'package:forecast_app/src/states/ThemeState.dart';
 import 'package:forecast_app/src/ui/WeatherWidget.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:kiwi/kiwi.dart' as kiwi;
+
 
 Future<void> main() async {
+  initKiwi();
   try {
     await SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp, 
@@ -19,7 +22,6 @@ Future<void> main() async {
         desiredAccuracy: LocationAccuracy.high);
 
     runApp(MyApp(
-      weatherRepository: WeatherRepository(),
       latLng: LatLng(position.latitude, position.longitude),
     ));
   } on PlatformException catch (e) {
@@ -28,9 +30,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatefulWidget {
-  final WeatherRepository weatherRepository;
   final LatLng latLng;
-  MyApp({Key key, @required this.weatherRepository, @required this.latLng})
+  MyApp({Key key, @required this.latLng})
       : super(key: key);
 
   @override
@@ -39,7 +40,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  ThemeBloc _themeBloc = ThemeBloc();
+  ThemeBloc _themeBloc = kiwi.Container().resolve<ThemeBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,6 @@ class _MyAppState extends State<MyApp> {
                   title: 'Flutter Demo',
                   home: WeatherWidget(
                     latLng: this.widget.latLng,
-                    weatherRepository: this.widget.weatherRepository,
                   ),
               );
             }

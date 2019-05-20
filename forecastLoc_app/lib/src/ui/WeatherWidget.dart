@@ -10,12 +10,14 @@ import 'package:forecast_app/src/repositories/WeatherRepository.dart';
 import 'package:forecast_app/src/states/WeatherState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forecast_app/src/ui/PositionenTextField.dart';
+import 'package:kiwi/kiwi.dart' as kiwi;
 
 class WeatherWidget extends StatefulWidget {
-  final WeatherRepository weatherRepository;
   final LatLng latLng;
-  WeatherWidget({Key key, this.weatherRepository, this.latLng})
+
+  WeatherWidget({Key key,this.latLng})
       : super(key: key);
+      
   _WeatherWidgetState createState() => _WeatherWidgetState();
 }
 
@@ -25,7 +27,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
   @override
   void initState() {
     super.initState();
-    this.weatherBloc = WeatherBloc(weatherRepository: widget.weatherRepository);
+    this.weatherBloc = kiwi.Container().resolve<WeatherBloc>();
   }
 
   @override
@@ -55,5 +57,11 @@ class _WeatherWidgetState extends State<WeatherWidget> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    this.weatherBloc.dispose();
+    super.dispose();
   }
 }
