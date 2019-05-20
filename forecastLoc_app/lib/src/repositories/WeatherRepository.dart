@@ -5,6 +5,7 @@ import 'package:forecast_app/src/models/Weather.dart';
 class WeatherRepository {
   final ApiClient apiClient;
   WeatherRepository([this.apiClient = const ApiClient()]);
+  
   Future<Weather> loadCurrentWeather(
       {String longitude, String latitude, String cityName}) async {
     try {

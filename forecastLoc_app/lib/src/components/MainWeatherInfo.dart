@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forecast_app/src/blocs/ThemeBloc.dart';
 import 'package:forecast_app/src/blocs/WeatherBloc.dart';
 import 'package:forecast_app/src/events/FetchWeatherEvent.dart';
@@ -11,6 +10,7 @@ import 'package:forecast_app/src/states/WeatherState.dart';
 import 'package:forecast_app/src/ui/ForecastInfo.dart';
 import 'package:forecast_app/src/ui/GradientBackground.dart';
 import 'package:forecast_app/src/ui/WeatherInfo.dart';
+import 'package:kiwi/kiwi.dart' as kiwi;
 
 class MainWeatherInfo extends StatefulWidget {
   final WeatherCompleteState state;
@@ -34,7 +34,7 @@ class _MainWeatherInfoState extends State<MainWeatherInfo> {
   @override
   Widget build(BuildContext context) {
 
-    final themeBloc = BlocProvider.of<ThemeBloc>(context);
+    final themeBloc = kiwi.Container().resolve<ThemeBloc>();
     themeBloc.dispatch(WeatherChanged(conditionIconId: widget.state.weather.icon));
 
     _refreshCompleter?.complete();

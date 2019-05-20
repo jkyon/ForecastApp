@@ -6,7 +6,7 @@ import 'package:forecast_app/src/repositories/WeatherRepository.dart';
 import 'package:kiwi/kiwi.dart';
 
 void initKiwi(){
-  Container().registerFactory((c) => WeatherRepository());
+  Container().registerSingleton((c) => WeatherRepository());
   Container().registerFactory((x) => WeatherBloc(weatherRepository: x.resolve()));
-  Container().registerFactory((x) => ThemeBloc());
+  Container().registerSingleton((x) => ThemeBloc());
 }

@@ -4,7 +4,9 @@ import 'dart:core';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
+
   const ApiClient();
+  
   Future<dynamic> get(String url) async {
     final http.Response response = await http.get(url, headers: {
       'Content-Type': 'application/json'
