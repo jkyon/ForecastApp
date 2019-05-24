@@ -18,7 +18,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
   @override
   Stream<ThemeState> mapEventToState(
-    ThemeState currentState,
     ThemeEvent event,
   ) async* {
     if(event is WeatherChanged){

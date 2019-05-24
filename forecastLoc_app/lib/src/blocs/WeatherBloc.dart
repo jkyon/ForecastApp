@@ -14,7 +14,6 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
   
   @override
   Stream<WeatherState> mapEventToState(
-    WeatherState currentState,
     FetchWeatherEvent event,
   ) async* {
     if (event is FetchWeatherEvent) {
