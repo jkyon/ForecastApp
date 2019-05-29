@@ -6,7 +6,6 @@ import 'package:forecast_app/src/components/WeatherErrorView.dart';
 import 'package:forecast_app/src/events/FetchWeatherEvent.dart';
 import 'package:forecast_app/src/blocs/WeatherBloc.dart';
 import 'package:forecast_app/src/models/LatLng.dart';
-import 'package:forecast_app/src/repositories/WeatherRepository.dart';
 import 'package:forecast_app/src/states/WeatherState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forecast_app/src/ui/PositionenTextField.dart';
