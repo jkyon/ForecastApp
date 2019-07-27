@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forecast_app/src/ui/RowIcon.dart';
+import 'package:forecast_app/src/ui/row_icon.dart';
 import 'package:forecast_app/src/util/constants.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_icons/flutter_icons.dart';

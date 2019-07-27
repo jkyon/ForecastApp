@@ -1,15 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:forecast_app/src/components/LoadingWeatherView.dart';
-import 'package:forecast_app/src/components/MainWeatherInfo.dart';
-import 'package:forecast_app/src/components/WeatherErrorView.dart';
-import 'package:forecast_app/src/events/FetchWeatherEvent.dart';
-import 'package:forecast_app/src/blocs/WeatherBloc.dart';
-import 'package:forecast_app/src/models/LatLng.dart';
-import 'package:forecast_app/src/repositories/WeatherRepository.dart';
-import 'package:forecast_app/src/states/WeatherState.dart';
+import 'package:forecast_app/src/blocs/weather/weather.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forecast_app/src/ui/PositionenTextField.dart';
+import 'package:forecast_app/src/components/components.dart';
+import 'package:forecast_app/src/models/models.dart';
+import 'package:forecast_app/src/ui/ui.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
 
 class WeatherWidget extends StatefulWidget {

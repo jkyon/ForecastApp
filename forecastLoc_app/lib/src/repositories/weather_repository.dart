@@ -1,4 +1,4 @@
-import 'package:forecast_app/src/api/ApiClient.dart';
+import 'package:forecast_app/src/api/api_client.dart';
 import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/models/Weather.dart';
 

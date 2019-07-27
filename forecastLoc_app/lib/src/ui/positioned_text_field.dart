@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forecast_app/src/blocs/WeatherBloc.dart';
-import 'package:forecast_app/src/events/FetchWeatherEvent.dart';
+import 'package:forecast_app/src/blocs/weather/weather.dart';
 
 class SearchAppBar extends StatefulWidget {
   final Widget body;

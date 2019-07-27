@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:forecast_app/src/ui/GradientBackground.dart';
+import 'package:forecast_app/src/ui/gradient_background.dart';
+
 
 class LoadingWeatherView extends StatefulWidget {
 

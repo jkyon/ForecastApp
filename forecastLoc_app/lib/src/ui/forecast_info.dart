@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forecast_app/src/models/Forecast.dart';
-import 'package:forecast_app/src/ui/ColumnIcon.dart';
+import 'package:forecast_app/src/ui/column_icon.dart';
 import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 
 class ForecastInfo extends StatelessWidget {

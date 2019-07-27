@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:forecast_app/src/events/ThemeEvent.dart';
-import 'package:forecast_app/src/states/ThemeState.dart';
-
+import './look_and_feel.dart';
 
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {

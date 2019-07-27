@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:forecast_app/src/ui/GradientBackground.dart';
+import 'package:forecast_app/src/ui/ui.dart';
+
 
 class WeatherErrorView extends StatelessWidget {
   const WeatherErrorView({Key key}) : super(key: key);

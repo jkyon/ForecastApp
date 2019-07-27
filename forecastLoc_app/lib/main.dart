@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:forecast_app/src/IoC/WeatherAppIoC.dart';
-import 'package:forecast_app/src/blocs/ThemeBloc.dart';
-import 'package:forecast_app/src/models/LatLng.dart';
-import 'package:forecast_app/src/states/ThemeState.dart';
-import 'package:forecast_app/src/ui/WeatherWidget.dart';
+import 'package:forecast_app/src/IoC/weather_app_ioc.dart';
+import 'package:forecast_app/src/blocs/look_and_feel/look_and_feel.dart';
 import 'package:flutter/services.dart';
+import 'package:forecast_app/src/ui/ui.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
+
+import 'src/models/lat_lng.dart';
 
 
 Future<void> main() async {
