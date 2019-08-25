@@ -1,19 +1,33 @@
 import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable {
+
   final int id;
+
   final String main;
+
   final String description;
+  
   final String icon;
+
   final int temp;
+
   final int humidity;
+
   final int tempMax;
+
   final int tempMin;
+
   final String country;
+
   final String cityName;
+
   final int cityId;
+
   final double lon;
+
   final double lat;
+
   Weather(
       {this.id,
       this.main,
@@ -43,6 +57,7 @@ class Weather extends Equatable {
           lon,
           lat
         ]);
+
   static Weather fromJson(dynamic json) {
     return Weather(
         id: json["weather"][0]["id"],

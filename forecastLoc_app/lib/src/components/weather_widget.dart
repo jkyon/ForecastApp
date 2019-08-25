@@ -48,6 +48,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
             if (state is ErrorWeatherState) {
               return WeatherErrorView();
             }
+            else{
+              return WeatherErrorView();
+            }
           },
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/models/Weather.dart';
+import 'package:forecast_app/src/models/local_time.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -21,9 +22,10 @@ class WeatherLoadingState extends WeatherState {
 class WeatherCompleteState extends WeatherState {
   final Weather weather;
   final List<Forecast> fiveDaysForecast;
+  final LocalTime localTime;
   WeatherCompleteState(
-      {@required this.weather, @required this.fiveDaysForecast})
-      : super([weather, fiveDaysForecast]);
+      {@required this.weather, @required this.fiveDaysForecast, @required this.localTime,})
+      : super([weather, fiveDaysForecast, localTime]);
   @override
   String toString() => 'WeatherCompleteState';
 }

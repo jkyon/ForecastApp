@@ -2,13 +2,21 @@ import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
 class Forecast extends Equatable {
+
   final String main;
+
   final String description;
+
   final String icon;
+
   final int temp;
+
   final int humidity;
+
   final DateTime date;
+
   final String dayOfWeek;
+
   Forecast(
       {this.date,
       this.main,
@@ -18,8 +26,11 @@ class Forecast extends Equatable {
       this.humidity,
       this.dayOfWeek})
       : super([date, main, description, icon, temp, humidity, dayOfWeek]);
+
+
   static List<Forecast> fromJson(dynamic json) {
     var forecastList = List<Forecast>();
+
     for (var item in json["list"]) {
       var date = DateTime.parse(item["dt_txt"]);
       var strDate = item["dt_txt"].toString().split(" ")[0];
@@ -38,6 +49,7 @@ class Forecast extends Equatable {
           date: date,
           dayOfWeek: DateFormat('EEEE').format(date)));
     }
+    
     return forecastList;
   }
 }

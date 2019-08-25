@@ -55,6 +55,8 @@ class _MainWeatherInfoState extends State<MainWeatherInfo> {
                 humidity: widget.state.weather.humidity.toString(),
                 maxTemp: widget.state.weather.tempMax.toString(),
                 minTemp: widget.state.weather.tempMin.toString(),
+                localTime: widget.state.localTime.timeOfDay.format(context),
+                currentDate: widget.state.localTime.date,
               ),
               ForecastInfo(
                 forecast: widget.state.fiveDaysForecast,

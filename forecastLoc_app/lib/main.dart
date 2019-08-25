@@ -21,6 +21,9 @@ Future<void> main() async {
     var position = await geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
 
+
+    
+    
     runApp(MyApp(
       latLng: LatLng(position.latitude, position.longitude),
     ));

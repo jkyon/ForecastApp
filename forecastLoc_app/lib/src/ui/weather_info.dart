@@ -7,13 +7,25 @@ import 'package:intl/intl.dart';
 import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 
 class WeatherInfo extends StatelessWidget {
+
   final String forecastIcon;
+
   final String forecastDescription;
+
   final String temperature;
+
   final String humidity;
+
   final String maxTemp;
+
   final String minTemp;
+
   final String cityName;
+
+  final String localTime;
+
+  final String currentDate;
+
   WeatherInfo({
     Key key,
     this.forecastIcon,
@@ -23,6 +35,8 @@ class WeatherInfo extends StatelessWidget {
     this.maxTemp,
     this.minTemp,
     this.cityName,
+    this.localTime,
+    this.currentDate,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -40,7 +54,12 @@ class WeatherInfo extends StatelessWidget {
                 fontSize: wp(10), color: Colors.white, fontWeight: FontWeight.w600),
           ),
           Text(
-            DateFormat.yMMMMd("en_US").format(DateTime.now()),
+            this.currentDate,
+            style: TextStyle(
+                fontSize: wp(5), color: Colors.white, fontWeight: FontWeight.w300),
+          ),
+          Text(
+            this.localTime,
             style: TextStyle(
                 fontSize: wp(5), color: Colors.white, fontWeight: FontWeight.w300),
           ),

@@ -3,7 +3,9 @@ import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/models/Weather.dart';
 
 class WeatherRepository {
+
   final ApiClient apiClient;
+  
   WeatherRepository([this.apiClient = const ApiClient()]);
   
   Future<Weather> loadCurrentWeather(
