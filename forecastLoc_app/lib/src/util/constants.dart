@@ -4,8 +4,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 const Map<String, dynamic> parameterIcons = {
   '01d': MdiIcons.weatherSunny,
   '01n': MdiIcons.weatherNight,
-  '02d': MdiIcons.weatherPartlycloudy,
-  '02n': MdiIcons.weatherPartlycloudy,
+  '02d': MdiIcons.weatherCloudy,
+  '02n': MdiIcons.weatherCloudy,
   '03d': MdiIcons.weatherCloudy,
   '03n': MdiIcons.weatherCloudy,
   '04d': MdiIcons.weatherCloudy,

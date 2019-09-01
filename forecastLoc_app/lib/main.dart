@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        bloc: _themeBloc,
+        builder: (BuildContext context) => _themeBloc,
         child: BlocBuilder(
             bloc: _themeBloc,
             builder: (BuildContext context, ThemeState themeState) {
