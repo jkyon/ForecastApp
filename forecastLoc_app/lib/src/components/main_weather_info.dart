@@ -30,7 +30,7 @@ class _MainWeatherInfoState extends State<MainWeatherInfo> {
   Widget build(BuildContext context) {
 
     final themeBloc = kiwi.Container().resolve<ThemeBloc>();
-    themeBloc.dispatch(WeatherChanged(conditionIconId: widget.state.weather.icon));
+    themeBloc..add(WeatherChanged(conditionIconId: widget.state.weather.icon));
 
     _refreshCompleter?.complete();
     _refreshCompleter = Completer();
@@ -40,7 +40,7 @@ class _MainWeatherInfoState extends State<MainWeatherInfo> {
         GradientBackground(iconId: widget.state.weather.icon),
         RefreshIndicator(
           onRefresh: () {
-            widget.weatherBloc.dispatch(FetchWeatherEvent(
+            widget.weatherBloc..add(FetchWeatherEvent(
                 latitude: widget.latLng.latitude.toString(),
                 longitude: widget.latLng.longitude.toString()));
             return _refreshCompleter.future;

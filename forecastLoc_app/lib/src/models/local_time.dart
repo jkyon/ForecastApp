@@ -27,5 +27,8 @@ class LocalTime extends Equatable {
       errorMessage: json["message"]
     );
   }
+
+  @override
+  List<Object> get props => [date, timeOfDay, timeZone, status, errorMessage];
   
 }

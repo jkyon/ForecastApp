@@ -2,11 +2,14 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 abstract class ThemeEvent extends Equatable{
-  ThemeEvent([List props = const []]) : super(props);
+  const ThemeEvent() ;
 }
 
 class WeatherChanged extends ThemeEvent {
   final String conditionIconId;
 
-  WeatherChanged({@required this.conditionIconId}) : super([conditionIconId]);
+  const WeatherChanged({@required this.conditionIconId});
+
+  @override
+  List<Object> get props => [conditionIconId];
 }

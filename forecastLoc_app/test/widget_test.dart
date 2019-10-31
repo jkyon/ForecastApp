@@ -18,7 +18,7 @@ void main() {
 
   testWidgets('Displays the loading indicator when weather data is loading', (WidgetTester tester) async {
 
-    when(mockWeatherBloc.currentState).thenReturn(WeatherLoadingState());
+    when(mockWeatherBloc.state).thenReturn(WeatherLoadingState());
     await tester.pumpWidget(
       MaterialApp(
         home:  WeatherWidget(latLng: LatLng(37.42796133580664, -122.085749655962),

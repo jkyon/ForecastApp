@@ -34,7 +34,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
           bloc: this.weatherBloc,
           builder: (BuildContext context, WeatherState state) {
             if (state is WeatherEmptyState) {
-              weatherBloc.dispatch(FetchWeatherEvent(
+              weatherBloc..add(FetchWeatherEvent(
                   latitude: widget.latLng.latitude.toString(),
                   longitude: widget.latLng.longitude.toString()));
               return LoadingWeatherView();
@@ -59,7 +59,6 @@ class _WeatherWidgetState extends State<WeatherWidget> {
 
   @override
   void dispose() {
-    this.weatherBloc.dispose();
     super.dispose();
   }
 }

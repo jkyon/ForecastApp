@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:intl/intl.dart';
 
 class Forecast extends Equatable {
@@ -24,9 +24,7 @@ class Forecast extends Equatable {
       this.icon,
       this.temp,
       this.humidity,
-      this.dayOfWeek})
-      : super([date, main, description, icon, temp, humidity, dayOfWeek]);
-
+      this.dayOfWeek});
 
   static List<Forecast> fromJson(dynamic json) {
     var forecastList = List<Forecast>();
@@ -52,4 +50,7 @@ class Forecast extends Equatable {
     
     return forecastList;
   }
+
+  @override
+  List<Object> get props => [date, main, description, icon, temp, humidity, dayOfWeek];
 }

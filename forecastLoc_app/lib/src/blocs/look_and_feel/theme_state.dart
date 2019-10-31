@@ -5,8 +5,10 @@ import 'package:meta/meta.dart';
 @immutable
 class ThemeState extends Equatable {
   final ThemeData theme;
-  //final MaterialColor color;
 
-  ThemeState({@required this.theme}): super ([theme]);
+  const ThemeState({@required this.theme});
+
+  @override
+  List<Object> get props => [theme];
   
 }

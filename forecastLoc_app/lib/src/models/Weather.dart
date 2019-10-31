@@ -1,13 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable {
-
   final int id;
 
   final String main;
 
   final String description;
-  
+
   final String icon;
 
   final int temp;
@@ -41,22 +40,7 @@ class Weather extends Equatable {
       this.cityName,
       this.cityId,
       this.lon,
-      this.lat})
-      : super([
-          id,
-          main,
-          description,
-          icon,
-          temp,
-          humidity,
-          tempMax,
-          tempMin,
-          country,
-          cityName,
-          cityId,
-          lon,
-          lat
-        ]);
+      this.lat});
 
   static Weather fromJson(dynamic json) {
     return Weather(
@@ -74,4 +58,21 @@ class Weather extends Equatable {
         lat: json["coord"]["lat"],
         lon: json["coord"]["lon"]);
   }
+
+  @override
+  List<Object> get props => [
+        id,
+        main,
+        description,
+        icon,
+        temp,
+        humidity,
+        tempMax,
+        tempMin,
+        country,
+        cityName,
+        cityId,
+        lat,
+        lon
+      ];
 }

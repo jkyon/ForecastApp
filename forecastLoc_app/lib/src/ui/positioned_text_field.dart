@@ -38,8 +38,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
                     _searchValue = searchValue;
                   },
                   onEditingComplete: () {
-                    widget.weatherBloc
-                        .dispatch(FetchWeatherEvent(cityName: _searchValue));
+                    widget.weatherBloc..add(FetchWeatherEvent(cityName: _searchValue));
                   },
                 );
               } else {

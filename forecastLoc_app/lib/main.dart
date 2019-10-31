@@ -11,6 +11,7 @@ import 'src/models/lat_lng.dart';
 
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   initKiwi();
   try {
     await SystemChrome.setPreferredOrientations([
@@ -67,7 +68,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    _themeBloc.dispose();    
     super.dispose();
   }
 }

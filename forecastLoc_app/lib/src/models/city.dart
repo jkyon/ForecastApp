@@ -29,5 +29,8 @@ class City extends Equatable {
     );
   }
 
+  @override
+  List<Object> get props => [state, city, provience, timeZone, region, country];
+
 
 }
