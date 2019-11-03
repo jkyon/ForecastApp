@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp(
                   theme: themeState.theme,
                   debugShowCheckedModeBanner: false,
-                  title: 'Flutter Demo',
+                  title: 'Weather Forecast',
                   home: WeatherWidget(
                     latLng: this.widget.latLng,
                   ),
