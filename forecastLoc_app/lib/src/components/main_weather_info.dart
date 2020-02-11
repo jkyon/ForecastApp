@@ -19,6 +19,7 @@ class MainWeatherInfo extends StatefulWidget {
 }
 
 class _MainWeatherInfoState extends State<MainWeatherInfo> {
+  final themeBloc = kiwi.Container().resolve<ThemeBloc>();
   Completer<void> _refreshCompleter;
   @override
   void initState() {
@@ -29,7 +30,6 @@ class _MainWeatherInfoState extends State<MainWeatherInfo> {
   @override
   Widget build(BuildContext context) {
 
-    final themeBloc = kiwi.Container().resolve<ThemeBloc>();
     themeBloc..add(WeatherChanged(conditionIconId: widget.state.weather.icon));
 
     _refreshCompleter?.complete();

@@ -68,6 +68,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
+    _themeBloc.close();
     super.dispose();
   }
 }
