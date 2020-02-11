@@ -107,7 +107,7 @@ class WeatherInfo extends StatelessWidget {
                 fontWeight: FontWeight.w300,
                 fontSize: wp(10),
                 icon: Icon(
-                  FontAwesome.getIconData('thermometer-empty'),
+                  FontAwesome.thermometer_empty,
                   color: Colors.white,
                 ),
                 iconTextSymbol:
@@ -118,7 +118,7 @@ class WeatherInfo extends StatelessWidget {
                 fontWeight: FontWeight.w300,
                 fontSize: wp(10),
                 icon: Icon(
-                  FontAwesome.getIconData('thermometer-full'),
+                  FontAwesome.thermometer_full,
                   color: Colors.white,
                 ),
                 iconTextSymbol:

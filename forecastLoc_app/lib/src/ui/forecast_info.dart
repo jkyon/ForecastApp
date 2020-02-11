@@ -28,27 +28,27 @@ class ForecastInfo extends StatelessWidget {
           Wrap(
             spacing: wp(4),
             children: <Widget>[
-              ColumnIcon(
+              ColumnIconWidget(
                 dayOfWeek: forecast[0].dayOfWeek,
                 icon: forecast[0].icon,
                 temp: forecast[0].temp.toString(),
               ),
-              ColumnIcon(
+              ColumnIconWidget(
                 dayOfWeek: forecast[1].dayOfWeek,
                 icon: forecast[1].icon,
                 temp: forecast[1].temp.toString(),
               ),
-              ColumnIcon(
+              ColumnIconWidget(
                 dayOfWeek: forecast[2].dayOfWeek,
                 icon: forecast[2].icon,
                 temp: forecast[2].temp.toString(),
               ),
-              ColumnIcon(
+              ColumnIconWidget(
                 dayOfWeek: forecast[3].dayOfWeek,
                 icon: forecast[3].icon,
                 temp: forecast[3].temp.toString(),
               ),
-              ColumnIcon(
+              ColumnIconWidget(
                 dayOfWeek: forecast[4].dayOfWeek,
                 icon: forecast[4].icon,
                 temp: forecast[4].temp.toString(),

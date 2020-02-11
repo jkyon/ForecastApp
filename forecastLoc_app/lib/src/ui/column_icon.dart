@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:forecast_app/src/util/constants.dart';
 import 'package:flutter_responsive_screen/flutter_responsive_screen.dart';
 
-class ColumnIcon extends StatelessWidget {
+class ColumnIconWidget extends StatelessWidget {
   final String dayOfWeek;
   final String icon;
   final String temp;
-  ColumnIcon({Key key, this.dayOfWeek, this.icon, this.temp}) : super(key: key);
+  ColumnIconWidget({Key key, this.dayOfWeek, this.icon, this.temp}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final Function wp = Screen(MediaQuery.of(context).size).wp;
