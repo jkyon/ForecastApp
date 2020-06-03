@@ -9,7 +9,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeState get initialState => ThemeState(
     theme: ThemeData(
           primaryColor: Colors.lightBlue,
-          primaryTextTheme: TextTheme(title: TextStyle(color: Colors.white)), 
+          primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white)), 
           primaryIconTheme: IconThemeData(color: Colors.white)
     ), 
   );
@@ -28,7 +28,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     return ThemeState(
       theme: ThemeData(
           primaryColor: _themeColors[conditionIconId],
-          primaryTextTheme: TextTheme(title: TextStyle(color: Colors.white)), 
+          primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white)), 
           primaryIconTheme: IconThemeData(color: Colors.white)
       ),
     ); 
@@ -36,23 +36,23 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
 
   Map<String, Color> _themeColors = {
-    '01d': Color(0xff0390e8),//Colors.lightBlue[400],
-    '01n': Color(0xff000077),//Colors.indigo[900],
-    '02d': Color(0xff0085ff),//Colors.blue[600],
-    '02n': Color(0xff040434),//Colors.indigo[900],
-    '03d': Color(0xff0085ff),//Colors.indigo[600],
-    '03n': Color(0xff040434),//Colors.indigo[900],
-    '04n': Color(0xff040434),//Colors.indigo[900],
-    '04d': Color(0xff0085ff),//Colors.indigo[900],
-    '09n': Color(0xff0C1435),//Colors.deepPurple[900],
-    '09d': Color(0xff11487a),//Colors.lightBlue[900],
-    '10n': Color(0xff2d4627),//Colors.teal[900],
-    '10d': Color(0xff93a4b0),//Colors.blueGrey[300],
-    '11n': Color(0xff11487a),//Colors.lightBlue[900],
-    '11d': Color(0xff93a4b0),//,Colors.blueGrey[300],
-    '13n': Color(0xff0C1435),//Colors.deepPurple[900],
-    '13d': Color(0xffb7c2ce),//Colors.blueGrey[200],
-    '50n': Color(0xffd386a7),//Colors.pink[200],
-    '50d': Color(0xffe6e5e0),//Colors.grey[300],
+    '01d': Color(0xff0390e8),
+    '01n': Color(0xff000077),
+    '02d': Color(0xff0085ff),
+    '02n': Color(0xff040434),
+    '03d': Color(0xff0085ff),
+    '03n': Color(0xff040434),
+    '04n': Color(0xff040434),
+    '04d': Color(0xff0085ff),
+    '09n': Color(0xff0C1435),
+    '09d': Color(0xff11487a),
+    '10n': Color(0xff2d4627),
+    '10d': Color(0xff93a4b0),
+    '11n': Color(0xff11487a),
+    '11d': Color(0xff93a4b0),
+    '13n': Color(0xff0C1435),
+    '13d': Color(0xffb7c2ce),
+    '50n': Color(0xffd386a7),
+    '50d': Color(0xffe6e5e0),
   };
 }
