@@ -35,7 +35,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   }
 
 
-  Map<String, Color> _themeColors = {
+  final _themeColors = {
     '01d': Color(0xff0390e8),
     '01n': Color(0xff000077),
     '02d': Color(0xff0085ff),

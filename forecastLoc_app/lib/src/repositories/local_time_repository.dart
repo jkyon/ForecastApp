@@ -12,7 +12,7 @@ class LocalTimeRepository {
     try{
       var url =
           'http://api.timezonedb.com/v2.1/get-time-zone?key=NTUYN19YG2MK&format=json&by=position&lat=$latitude&lng=$longitude';
-      final dynamic response = await this.apiClient.get(url);
+      final dynamic response = await apiClient.get(url);
 
       return LocalTime.fromJson(response);
     } catch (e) {

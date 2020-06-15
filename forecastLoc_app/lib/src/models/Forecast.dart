@@ -27,11 +27,11 @@ class Forecast extends Equatable {
       this.dayOfWeek});
 
   static List<Forecast> fromJson(dynamic json) {
-    var forecastList = List<Forecast>();
+    var forecastList = <Forecast>[];
 
-    for (var item in json["list"]) {
-      var date = DateTime.parse(item["dt_txt"]);
-      var strDate = item["dt_txt"].toString().split(" ")[0];
+    for (var item in json['list']) {
+      var date = DateTime.parse(item['dt_txt']);
+      var strDate = item['dt_txt'].toString().split(' ')[0];
       if (forecastList.firstWhere(
               (x) => x.date.toIso8601String().contains(strDate),
               orElse: () => null) !=
@@ -39,11 +39,11 @@ class Forecast extends Equatable {
         continue;
       }
       forecastList.add(Forecast(
-          temp: (item["main"]["temp"]).toInt(),
-          humidity: item["main"]["humidity"],
-          description: item["weather"][0]["description"],
-          main: item["weather"][0]["main"],
-          icon: item["weather"][0]["icon"],
+          temp: (item['main']['temp']).toInt(),
+          humidity: item['main']['humidity'],
+          description: item['weather'][0]['description'],
+          main: item['weather'][0]['main'],
+          icon: item['weather'][0]['icon'],
           date: date,
           dayOfWeek: DateFormat('EEEE').format(date)));
     }

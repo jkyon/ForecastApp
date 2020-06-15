@@ -8,7 +8,7 @@ class ApiClient {
   const ApiClient();
   
   Future<dynamic> get(String url) async {
-    final http.Response response = await http.get(url, headers: {
+    final response = await http.get(url, headers: {
       'Content-Type': 'application/json'
     }).timeout(const Duration(seconds: 10));
     if (response.statusCode >= 400) {
@@ -27,7 +27,9 @@ class ApiClient {
       final dynamic jsonResponse = json.decode(response);
       message = jsonResponse['error'] ?? jsonResponse;
       message = message['message'] ?? message;
-    } catch (error) {}
+    } catch (error) {
+      return error.toString();
+    }
     return '$code: $message';
   }
 }

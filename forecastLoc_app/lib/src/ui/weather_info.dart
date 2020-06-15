@@ -53,12 +53,12 @@ class WeatherInfo extends StatelessWidget {
                 fontSize: wp(10), color: Colors.white, fontWeight: FontWeight.w600),
           ),
           Text(
-            this.currentDate,
+            currentDate,
             style: TextStyle(
                 fontSize: wp(5), color: Colors.white, fontWeight: FontWeight.w300),
           ),
           Text(
-            this.localTime,
+            localTime,
             style: TextStyle(
                 fontSize: wp(5), color: Colors.white, fontWeight: FontWeight.w300),
           ),
@@ -77,7 +77,7 @@ class WeatherInfo extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Expanded(
-                    child: Text(""),
+                    child: Text(''),
                     flex: 1,
                   ),
                   Text(
@@ -93,7 +93,7 @@ class WeatherInfo extends StatelessWidget {
                     size: wp(10),
                   ),
                   Expanded(
-                    child: Text(""),
+                    child: Text(''),
                     flex: 1,
                   ),
                 ],

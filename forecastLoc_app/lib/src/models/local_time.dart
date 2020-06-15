@@ -18,13 +18,13 @@ class LocalTime extends Equatable {
 
 
   static LocalTime fromJson(dynamic json) {
-    var parsedDate = DateTime.parse(json["formatted"]);
+    var parsedDate = DateTime.parse(json['formatted']);
     return LocalTime(
-      date: DateFormat.yMMMMd("en_US").format(parsedDate),
+      date: DateFormat.yMMMMd('en_US').format(parsedDate),
       timeOfDay: TimeOfDay.fromDateTime(parsedDate),
-      timeZone: json["zoneName"],
-      status: json["status"],
-      errorMessage: json["message"]
+      timeZone: json['zoneName'],
+      status: json['status'],
+      errorMessage: json['message']
     );
   }
 

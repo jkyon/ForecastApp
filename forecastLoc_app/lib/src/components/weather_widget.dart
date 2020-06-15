@@ -13,6 +13,7 @@ class WeatherWidget extends StatefulWidget {
   WeatherWidget({Key key,this.latLng})
       : super(key: key);
       
+  @override
   _WeatherWidgetState createState() => _WeatherWidgetState();
 }
 
@@ -22,16 +23,16 @@ class _WeatherWidgetState extends State<WeatherWidget> {
   @override
   void initState() {
     super.initState();
-    this.weatherBloc = kiwi.Container().resolve<WeatherBloc>();
+    weatherBloc = kiwi.Container().resolve<WeatherBloc>();
   }
 
   @override
   Widget build(BuildContext context) {
     return SearchAppBar(
-      weatherBloc: this.weatherBloc,
+      weatherBloc: weatherBloc,
       body: Center(
         child: BlocBuilder(
-          bloc: this.weatherBloc,
+          bloc: weatherBloc,
           builder: (BuildContext context, WeatherState state) {
             if (state is WeatherEmptyState) {
               weatherBloc..add(FetchWeatherEvent(

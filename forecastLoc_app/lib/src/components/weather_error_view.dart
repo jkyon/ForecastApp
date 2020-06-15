@@ -13,7 +13,7 @@ class WeatherErrorView extends StatelessWidget {
       ),
       Center(
         child: Text(
-          "No Data Found",
+          'No Data Found',
           style: TextStyle(
               fontSize: 50, color: Colors.white, fontWeight: FontWeight.w600),
         ),

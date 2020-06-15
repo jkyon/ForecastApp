@@ -20,12 +20,12 @@ class City extends Equatable {
 
   static City fromJson(dynamic json) {
     return City(
-      city: json["city"],
-      country: json["country"],
-      state: json["state"],
-      provience: json["prov"],
-      region: json["region"],
-      timeZone: json["timezone"]
+      city: json['city'],
+      country: json['country'],
+      state: json['state'],
+      provience: json['prov'],
+      region: json['region'],
+      timeZone: json['timezone']
     );
   }
 

@@ -13,7 +13,7 @@ class CityRepository {
      try {
       var url =
           'http://geocode.xyz/$latitude,$longitude?json=1&auth=748190069602589531x3311';
-      final dynamic response = await this.apiClient.get(url);
+      final dynamic response = await apiClient.get(url);
       return City.fromJson(response);
     } catch (e) {
       rethrow;

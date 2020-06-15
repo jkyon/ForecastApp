@@ -15,6 +15,8 @@ class MainWeatherInfo extends StatefulWidget {
   MainWeatherInfo({Key key, this.latLng, this.state, this.weatherBloc})
       : super(key: key);
 
+  
+  @override
   _MainWeatherInfoState createState() => _MainWeatherInfoState();
 }
 

@@ -14,7 +14,7 @@ class _LoadingWeatherViewState extends State<LoadingWeatherView> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
-      GradientBackground(iconId: "00d"),
+      GradientBackground(iconId: '00d'),
       Center(
         child: CircularProgressIndicator(
             backgroundColor: Colors.white,

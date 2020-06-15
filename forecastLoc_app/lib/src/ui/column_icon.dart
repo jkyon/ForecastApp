@@ -25,7 +25,7 @@ class ColumnIconWidget extends StatelessWidget {
           size: wp(12),
           color: Colors.white,
         ),
-        Text(temp.toString() + "°C",
+        Text(temp.toString() + '°C',
             style: TextStyle(
                 fontSize: wp(4),
                 color: Colors.white,

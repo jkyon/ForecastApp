@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
 
+import 'src/blocs/base_bloc_delegate.dart';
 import 'src/components/weather_widget.dart';
 import 'src/models/lat_lng.dart';
 
@@ -18,12 +19,11 @@ Future<void> main() async {
         DeviceOrientation.portraitUp, 
         DeviceOrientation.portraitDown
     ]);
-    final Geolocator geolocator = Geolocator();
+    final geolocator = Geolocator();
     var position = await geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
 
-
-    
+    BlocSupervisor.delegate = BaseBlocDelegate();
     
     runApp(MyApp(
       latLng: LatLng(position.latitude, position.longitude),
@@ -44,7 +44,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  ThemeBloc _themeBloc = kiwi.Container().resolve<ThemeBloc>();
+  final _themeBloc = kiwi.Container().resolve<ThemeBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
                   debugShowCheckedModeBanner: false,
                   title: 'Weather Forecast',
                   home: WeatherWidget(
-                    latLng: this.widget.latLng,
+                    latLng: widget.latLng,
                   ),
               );
             }

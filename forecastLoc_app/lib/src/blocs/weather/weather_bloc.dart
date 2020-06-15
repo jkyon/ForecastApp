@@ -16,6 +16,7 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
 
   WeatherBloc({@required this.cityRepository, @required this.weatherRepository, @required this.localTimeRepository});
 
+  @override
   WeatherState get initialState => WeatherEmptyState();
   
   @override
@@ -27,11 +28,13 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
       try {
         var city;
 
-        if(event.longitude != null && event.latitude != null)
-          city = await this.cityRepository.loadCurrentCity(event.longitude, event.latitude);
+        if(event.longitude != null && event.latitude != null){
+           city = await cityRepository.loadCurrentCity(event.longitude, event.latitude);
+        }
+         
 
         var weather = await weatherRepository.loadCurrentWeather(
-            cityName: event.cityName == null ? city.city : event.cityName);
+            cityName: event.cityName ?? city.city);
         var forecastList = await weatherRepository.loadForecast(
             weather.lon.toString(), weather.lat.toString());
 
@@ -40,6 +43,7 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
             weather: weather, fiveDaysForecast: forecastList, localTime: localTime);
       } catch (e) {
         yield ErrorWeatherState();
+        rethrow;
       }
     }
   }

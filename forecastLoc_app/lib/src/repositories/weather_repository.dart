@@ -1,3 +1,5 @@
+//import 'dart:io';
+
 import 'package:forecast_app/src/api/api_client.dart';
 import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/models/Weather.dart';
@@ -16,7 +18,7 @@ class WeatherRepository {
       var urlCity =
           'http://api.openweathermap.org/data/2.5/weather?q=$cityName&units=metric&APPID=f24e6768f000a9f5f387d6b94a5b0411';
       var urlSelected = cityName == null ? url : urlCity;
-      final dynamic response = await this.apiClient.get(urlSelected);
+      final dynamic response = await apiClient.get(urlSelected);
       return Weather.fromJson(response);
     } catch (e) {
       rethrow;
@@ -27,7 +29,9 @@ class WeatherRepository {
     try {
       var url =
           'http://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&APPID=f24e6768f000a9f5f387d6b94a5b0411';
-      final dynamic response = await this.apiClient.get(url);
+      final dynamic response = await apiClient.get(url);
+      //throw SocketException("No Intenet");
+
       return Forecast.fromJson(response);
     } catch (e) {
       rethrow;

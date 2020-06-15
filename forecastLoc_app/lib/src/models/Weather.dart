@@ -44,19 +44,19 @@ class Weather extends Equatable {
 
   static Weather fromJson(dynamic json) {
     return Weather(
-        id: json["weather"][0]["id"],
-        main: json["weather"][0]["main"],
-        description: json["weather"][0]["description"],
-        icon: json["weather"][0]["icon"],
-        temp: (json["main"]["temp"]).toInt(),
-        humidity: json["main"]["humidity"],
-        tempMax: (json["main"]["temp_max"]).toInt(),
-        tempMin: (json["main"]["temp_min"]).toInt(),
-        country: json["sys"]["country"],
-        cityName: json["name"],
-        cityId: json["id"],
-        lat: json["coord"]["lat"],
-        lon: json["coord"]["lon"]);
+        id: json['weather'][0]['id'],
+        main: json['weather'][0]['main'],
+        description: json['weather'][0]['description'],
+        icon: json['weather'][0]['icon'],
+        temp: (json['main']['temp']).toInt(),
+        humidity: json['main']['humidity'],
+        tempMax: (json['main']['temp_max']).toInt(),
+        tempMin: (json['main']['temp_min']).toInt(),
+        country: json['sys']['country'],
+        cityName: json['name'],
+        cityId: json['id'],
+        lat: json['coord']['lat'],
+        lon: json['coord']['lon']);
   }
 
   @override

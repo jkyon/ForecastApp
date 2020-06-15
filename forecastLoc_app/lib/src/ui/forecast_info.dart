@@ -20,11 +20,11 @@ class ForecastInfo extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            "Next 5 days forecast",
+            'Next 5 days forecast',
             style: TextStyle(
                 fontSize: wp(7), color: Colors.white, fontWeight: FontWeight.w400),
           ),
-          Text(""),
+          Text(''),
           Wrap(
             spacing: wp(4),
             children: <Widget>[
