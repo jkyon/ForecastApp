@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
+import 'package:forecast_app/src/api/exceptions/api_exception.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
@@ -18,18 +19,18 @@ class ApiClient {
     return jsonResponse;
   }
 
-  String _parseError(int code, String response) {
+  ApiException _parseError(int code, String response) {
     dynamic message = response;
     if (response.contains('DOCTYPE html')) {
-      return '$code: An error occurred';
+      return ApiException(message:'An error occurred', code: code);
     }
     try {
       final dynamic jsonResponse = json.decode(response);
       message = jsonResponse['error'] ?? jsonResponse;
       message = message['message'] ?? message;
     } catch (error) {
-      return error.toString();
+      return ApiException(message: error.toString(), code: code);
     }
-    return '$code: $message';
+    return ApiException(message: message, code: code);
   }
 }

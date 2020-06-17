@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:forecast_app/src/models/Forecast.dart';
 import 'package:forecast_app/src/models/Weather.dart';
 import 'package:forecast_app/src/models/local_time.dart';
+import 'package:forecast_app/src/repositories/exceptions/exception_type.dart';
+import 'package:forecast_app/src/repositories/exceptions/repository_exception.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -10,7 +12,6 @@ abstract class WeatherState extends Equatable {
 }
 
 class WeatherEmptyState extends WeatherState {
-
   const WeatherEmptyState();
   @override
   String toString() => 'WeatherEmptyState';
@@ -20,7 +21,6 @@ class WeatherEmptyState extends WeatherState {
 }
 
 class WeatherLoadingState extends WeatherState {
-
   const WeatherLoadingState();
 
   @override
@@ -31,13 +31,15 @@ class WeatherLoadingState extends WeatherState {
 }
 
 class WeatherCompleteState extends WeatherState {
-
   final Weather weather;
   final List<Forecast> fiveDaysForecast;
   final LocalTime localTime;
 
-  const WeatherCompleteState(
-      {@required this.weather, @required this.fiveDaysForecast, @required this.localTime,});
+  const WeatherCompleteState({
+    @required this.weather,
+    @required this.fiveDaysForecast,
+    @required this.localTime,
+  });
 
   @override
   String toString() => 'WeatherCompleteState';
@@ -47,12 +49,27 @@ class WeatherCompleteState extends WeatherState {
 }
 
 class ErrorWeatherState extends WeatherState {
-
-  const ErrorWeatherState();
-
-  @override
-  String toString() => 'ErrorWeatherState';
+  final RepositoryException exception;
+  const ErrorWeatherState({this.exception});
 
   @override
-  List<Object> get props => [];
+  String toString() {
+    switch (exception.errorType) {
+      case ExceptionType.SocketException:
+        return 'Please check your internet connection! 😞';
+      case ExceptionType.HttpException:
+        return 'Could not find wheather information!  😥';
+      case ExceptionType.FormatException:
+        return 'Bad response format';
+      case ExceptionType.ApiException:
+        return 'Could not find wheather information!  😥';
+      case ExceptionType.TypeError:
+        return 'Bad response format 👎';
+      default:
+        return 'An error occured, please restar the app 😢';
+    }
+  }
+
+  @override
+  List<Object> get props => [exception];
 }

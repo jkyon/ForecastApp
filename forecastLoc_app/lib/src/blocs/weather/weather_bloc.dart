@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:forecast_app/src/repositories/exceptions/repository_exception.dart';
 import 'package:forecast_app/src/repositories/repositories.dart';
 
 import 'package:meta/meta.dart';
@@ -32,7 +33,6 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
            city = await cityRepository.loadCurrentCity(event.longitude, event.latitude);
         }
          
-
         var weather = await weatherRepository.loadCurrentWeather(
             cityName: event.cityName ?? city.city);
         var forecastList = await weatherRepository.loadForecast(
@@ -41,8 +41,8 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
         var localTime = await localTimeRepository.loadCurrentLocalTime(weather.lon.toString(), weather.lat.toString());
         yield WeatherCompleteState(
             weather: weather, fiveDaysForecast: forecastList, localTime: localTime);
-      } catch (e) {
-        yield ErrorWeatherState();
+      } on RepositoryException catch (e) {
+        yield ErrorWeatherState(exception: e);
         rethrow;
       }
     }

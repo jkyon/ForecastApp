@@ -47,10 +47,10 @@ class _WeatherWidgetState extends State<WeatherWidget> {
               return MainWeatherInfo(latLng: widget.latLng, state: state, weatherBloc: weatherBloc);
             }
             if (state is ErrorWeatherState) {
-              return WeatherErrorView();
+              return WeatherErrorView(errorMessage: state.toString());
             }
             else{
-              return WeatherErrorView();
+              return WeatherErrorView(errorMessage: 'No data found');
             }
           },
         ),
