@@ -49,8 +49,12 @@ class WeatherCompleteState extends WeatherState {
 }
 
 class ErrorWeatherState extends WeatherState {
+  final String longitude;
+  final String latitude;
+  final String cityName;
   final RepositoryException exception;
-  const ErrorWeatherState({this.exception});
+  const ErrorWeatherState(
+      {this.exception, this.longitude, this.latitude, this.cityName});
 
   @override
   String toString() {
