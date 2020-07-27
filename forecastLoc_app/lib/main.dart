@@ -11,21 +11,18 @@ import 'src/blocs/base_bloc_delegate.dart';
 import 'src/components/weather_widget.dart';
 import 'src/models/lat_lng.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initKiwi();
   try {
-    await SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp, 
-        DeviceOrientation.portraitDown
-    ]);
+    await SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     final geolocator = Geolocator();
     var position = await geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
 
-    BlocSupervisor.delegate = BaseBlocDelegate(traceSource: TraceSource());
-    
+    Bloc.observer = BaseBlocDelegate(traceSource: TraceSource());
+
     runApp(MyApp(
       latLng: LatLng(position.latitude, position.longitude),
     ));
@@ -36,34 +33,31 @@ Future<void> main() async {
 
 class MyApp extends StatefulWidget {
   final LatLng latLng;
-  MyApp({Key key, @required this.latLng})
-      : super(key: key);
+  MyApp({Key key, @required this.latLng}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   final _themeBloc = kiwi.Container().resolve<ThemeBloc>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => _themeBloc,
-        child: BlocBuilder(
-            bloc: _themeBloc,
-            builder: (BuildContext context, ThemeState themeState) {
-              return MaterialApp(
-                  theme: themeState.theme,
-                  debugShowCheckedModeBanner: false,
-                  title: 'Weather Forecast',
-                  home: WeatherWidget(
-                    latLng: widget.latLng,
-                  ),
-              );
-            }
-        ),
+      create: (context) => _themeBloc,
+      child: BlocBuilder(
+          cubit: _themeBloc,
+          builder: (BuildContext context, ThemeState themeState) {
+            return MaterialApp(
+              theme: themeState.theme,
+              debugShowCheckedModeBanner: false,
+              title: 'Weather Forecast',
+              home: WeatherWidget(
+                latLng: widget.latLng,
+              ),
+            );
+          }),
     );
   }
 

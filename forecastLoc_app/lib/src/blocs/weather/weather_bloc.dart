@@ -17,10 +17,8 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
   WeatherBloc(
       {@required this.cityRepository,
       @required this.weatherRepository,
-      @required this.localTimeRepository});
-
-  @override
-  WeatherState get initialState => WeatherEmptyState();
+      @required this.localTimeRepository})
+      : super(WeatherEmptyState());
 
   @override
   Stream<WeatherState> mapEventToState(
@@ -53,7 +51,9 @@ class WeatherBloc extends Bloc<FetchWeatherEvent, WeatherState> {
       } on RepositoryException catch (e) {
         if (event.completer != null) event.completer.complete();
         yield ErrorWeatherState(
-            exception: e, latitude: event.latitude, longitude: event.longitude);
+            exception: e,
+            latitude: event.latitude ?? '0.0',
+            longitude: event.longitude ?? '0.0');
         rethrow;
       }
     }

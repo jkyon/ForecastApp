@@ -3,37 +3,27 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import './look_and_feel.dart';
 
-
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  @override
-  ThemeState get initialState => ThemeState(
-    theme: ThemeData(
-          primaryColor: Colors.lightBlue,
-          primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white)), 
-          primaryIconTheme: IconThemeData(color: Colors.white)
-    ), 
-  );
+  ThemeBloc(ThemeState initialState) : super(initialState);
 
   @override
   Stream<ThemeState> mapEventToState(
     ThemeEvent event,
   ) async* {
-    if(event is WeatherChanged){
-      yield  _mapWeatherConditionToThemeData(event.conditionIconId);
+    if (event is WeatherChanged) {
+      yield _mapWeatherConditionToThemeData(event.conditionIconId);
     }
   }
 
   ThemeState _mapWeatherConditionToThemeData(String conditionIconId) {
-
     return ThemeState(
       theme: ThemeData(
           primaryColor: _themeColors[conditionIconId],
-          primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white)), 
-          primaryIconTheme: IconThemeData(color: Colors.white)
-      ),
-    ); 
+          primaryTextTheme:
+              TextTheme(headline6: TextStyle(color: Colors.white)),
+          primaryIconTheme: IconThemeData(color: Colors.white)),
+    );
   }
-
 
   final _themeColors = {
     '01d': Color(0xff0390e8),

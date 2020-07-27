@@ -29,7 +29,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
       weatherBloc: weatherBloc,
       body: Center(
         child: BlocBuilder(
-          bloc: weatherBloc,
+          cubit: weatherBloc,
           builder: (BuildContext context, WeatherState state) {
             if (state is WeatherEmptyState) {
               weatherBloc
