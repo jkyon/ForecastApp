@@ -17,9 +17,8 @@ Future<void> main() async {
   try {
     await SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    final geolocator = Geolocator();
-    var position = await geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+    var position =
+        await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
     Bloc.observer = BaseBlocDelegate(traceSource: TraceSource());
 
@@ -40,24 +39,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _themeBloc = kiwi.Container().resolve<ThemeBloc>();
+  final _themeBloc = kiwi.KiwiContainer().resolve<ThemeBloc>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<ThemeBloc>(
       create: (context) => _themeBloc,
-      child: BlocBuilder(
-          cubit: _themeBloc,
+      child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (BuildContext context, ThemeState themeState) {
-            return MaterialApp(
-              theme: themeState.theme,
-              debugShowCheckedModeBanner: false,
-              title: 'Weather Forecast',
-              home: WeatherWidget(
-                latLng: widget.latLng,
-              ),
-            );
-          }),
+        return MaterialApp(
+          theme: themeState.theme,
+          debugShowCheckedModeBanner: false,
+          title: 'Weather Forecast',
+          home: WeatherWidget(
+            latLng: widget.latLng,
+          ),
+        );
+      }),
     );
   }
 

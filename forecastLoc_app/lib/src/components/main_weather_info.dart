@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:forecast_app/src/blocs/look_and_feel/look_and_feel.dart';
 import 'package:forecast_app/src/blocs/weather/weather.dart';
@@ -9,9 +7,9 @@ import 'package:forecast_app/src/ui/ui.dart';
 class MainWeatherInfo extends StatelessWidget {
   final WeatherCompleteState state;
   final LatLng latLng;
-  final String errorMessage;
   final Function(String, String) getWeatherInfo;
   final ThemeBloc themeBloc;
+  final bool dataFailed;
 
   MainWeatherInfo(
       {Key key,
@@ -19,14 +17,14 @@ class MainWeatherInfo extends StatelessWidget {
       this.state,
       this.getWeatherInfo,
       this.themeBloc,
-      this.errorMessage})
+      this.dataFailed})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return errorMessage == null
+    return !dataFailed
         ? _weatherInfoWidget(context)
-        : _errorMessageWidget(errorMessage, context);
+        : _errorMessageWidget(context);
   }
 
   Widget _weatherInfoWidget(BuildContext context) {
@@ -58,16 +56,7 @@ class MainWeatherInfo extends StatelessWidget {
     );
   }
 
-  Widget _errorMessageWidget(String errorMessage, BuildContext context) {
-    displaySnack(context).then((success) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.redAccent,
-          content: Text(errorMessage),
-        ),
-      );
-    });
-
+  Widget _errorMessageWidget(BuildContext context) {
     return Stack(children: <Widget>[
       GradientBackground(iconId: '00d'),
       RefreshIndicator(
@@ -76,9 +65,5 @@ class MainWeatherInfo extends StatelessWidget {
         child: ListView(children: <Widget>[Text('')]),
       )
     ]);
-  }
-
-  Future<bool> displaySnack(BuildContext context) async {
-    return true;
   }
 }

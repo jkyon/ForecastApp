@@ -5,14 +5,14 @@ import 'package:forecast_app/src/repositories/repositories.dart';
 import 'package:kiwi/kiwi.dart' as c;
 
 void initKiwi() {
-  c.Container().registerSingleton((c) => WeatherRepository());
-  c.Container().registerFactory((c) => CityRepository());
-  c.Container().registerFactory((c) => LocalTimeRepository());
-  c.Container().registerFactory((x) => WeatherBloc(
+  c.KiwiContainer().registerSingleton((c) => WeatherRepository());
+  c.KiwiContainer().registerFactory((c) => CityRepository());
+  c.KiwiContainer().registerFactory((c) => LocalTimeRepository());
+  c.KiwiContainer().registerFactory((x) => WeatherBloc(
       weatherRepository: x.resolve(),
       cityRepository: x.resolve(),
       localTimeRepository: x.resolve()));
-  c.Container().registerSingleton((x) => ThemeBloc(ThemeState(
+  c.KiwiContainer().registerSingleton((x) => ThemeBloc(ThemeState(
         theme: ThemeData(
             primaryColor: Colors.lightBlue,
             primaryTextTheme:
