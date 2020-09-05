@@ -41,11 +41,10 @@ class _WeatherWidgetState extends State<WeatherWidget> {
           },
           builder: (BuildContext context, WeatherState state) {
             if (state is WeatherEmptyState) {
-              weatherBloc
-                ..add(FetchWeatherEvent(
-                    latitude: widget.latLng.latitude.toString(),
-                    longitude: widget.latLng.longitude.toString(),
-                    completer: _refreshCompleter));
+              weatherBloc.getWeather(
+                  latitude: widget.latLng.latitude.toString(),
+                  longitude: widget.latLng.longitude.toString(),
+                  completer: _refreshCompleter);
               return LoadingWeatherView();
             }
             if (state is WeatherLoadingState) {
@@ -78,11 +77,10 @@ class _WeatherWidgetState extends State<WeatherWidget> {
         state: state,
         getWeatherInfo: (String latitude, String longitude) {
           _refreshCompleter = Completer<void>();
-          weatherBloc
-            ..add(FetchWeatherEvent(
-                latitude: latitude,
-                longitude: longitude,
-                completer: _refreshCompleter));
+          weatherBloc.getWeather(
+              latitude: latitude,
+              longitude: longitude,
+              completer: _refreshCompleter);
           return _refreshCompleter.future;
         });
   }

@@ -12,38 +12,37 @@ class SearchAppBar extends StatefulWidget {
 }
 
 class _SearchAppBarState extends State<SearchAppBar> {
-  Widget appBarTitle =  Text('Search City');
-  Icon actionIcon =  Icon(Icons.search);
+  Widget appBarTitle = Text('Search City');
+  Icon actionIcon = Icon(Icons.search);
   String _searchValue;
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar:
-        AppBar(centerTitle: true, title: appBarTitle, actions: <Widget>[
+    return Scaffold(
+      appBar: AppBar(centerTitle: true, title: appBarTitle, actions: <Widget>[
         IconButton(
           icon: actionIcon,
           onPressed: () {
             setState(() {
               if (actionIcon.icon == Icons.search) {
-                actionIcon =  Icon(Icons.close);
-                appBarTitle =  TextField(
-                  style:  TextStyle(
+                actionIcon = Icon(Icons.close);
+                appBarTitle = TextField(
+                  style: TextStyle(
                     color: Colors.white,
                   ),
-                  decoration:  InputDecoration(
-                      prefixIcon:  Icon(Icons.search, color: Colors.white),
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search, color: Colors.white),
                       hintText: 'Search City...',
-                      hintStyle:  TextStyle(color: Colors.white)),
+                      hintStyle: TextStyle(color: Colors.white)),
                   onChanged: (String searchValue) {
                     _searchValue = searchValue;
                   },
                   onEditingComplete: () {
-                    widget.weatherBloc..add(FetchWeatherEvent(cityName: _searchValue));
+                    widget.weatherBloc.getWeather(cityName: _searchValue);
                   },
                 );
               } else {
-                actionIcon =  Icon(Icons.search);
-                appBarTitle =  Text('Search City');
+                actionIcon = Icon(Icons.search);
+                appBarTitle = Text('Search City');
               }
             });
           },
