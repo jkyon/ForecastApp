@@ -17,8 +17,8 @@ Future<void> main() async {
   try {
     await SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    var position =
-        await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
 
     Bloc.observer = BaseBlocDelegate(traceSource: TraceSource());
 
@@ -39,12 +39,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _themeBloc = kiwi.KiwiContainer().resolve<ThemeBloc>();
-
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ThemeBloc>(
-      create: (context) => _themeBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(
+          create: (context) => kiwi.KiwiContainer().resolve<ThemeBloc>(),
+        ),
+      ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (BuildContext context, ThemeState themeState) {
         return MaterialApp(
@@ -61,7 +63,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    _themeBloc.close();
     super.dispose();
   }
 }
