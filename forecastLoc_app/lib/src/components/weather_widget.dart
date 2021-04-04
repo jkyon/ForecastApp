@@ -28,10 +28,10 @@ class _WeatherWidgetState extends State<WeatherWidget> {
       weatherBloc: weatherBloc,
       body: Center(
         child: BlocConsumer(
-          cubit: weatherBloc,
+          bloc: weatherBloc,
           listener: (BuildContext context, WeatherState state) {
             if (state is ErrorWeatherState) {
-              Scaffold.of(context).showSnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   backgroundColor: Colors.redAccent,
                   content: Text(state.toString()),

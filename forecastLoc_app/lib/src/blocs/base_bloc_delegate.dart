@@ -8,19 +8,19 @@ class BaseBlocDelegate extends BlocObserver {
   BaseBlocDelegate({@required this.traceSource});
 
   @override
-  void onEvent(Cubit bloc, Object event) {
+  void onEvent(BlocBase bloc, Object event) {
     super.onEvent(bloc, event);
     traceSource.traceInfo('Event', event);
   }
 
   @override
-  void onError(Cubit bloc, Object error, StackTrace stacktrace) {
+  void onError(BlocBase bloc, Object error, StackTrace stacktrace) {
     super.onError(bloc, error, stacktrace);
     traceSource.traceError('Error', error, stacktrace);
   }
 
   @override
-  void onTransition(Cubit bloc, Transition transition) {
+  void onTransition(BlocBase bloc, Transition transition) {
     super.onTransition(bloc, transition);
     traceSource.traceInfo('Transition', transition);
   }

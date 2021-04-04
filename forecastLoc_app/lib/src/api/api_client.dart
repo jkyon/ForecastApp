@@ -5,11 +5,10 @@ import 'package:forecast_app/src/api/exceptions/api_exception.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-
   const ApiClient();
-  
+
   Future<dynamic> get(String url) async {
-    final response = await http.get(url, headers: {
+    final response = await http.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json'
     }).timeout(const Duration(seconds: 10));
     if (response.statusCode >= 400) {
@@ -22,7 +21,7 @@ class ApiClient {
   ApiException _parseError(int code, String response) {
     dynamic message = response;
     if (response.contains('DOCTYPE html')) {
-      return ApiException(message:'An error occurred', code: code);
+      return ApiException(message: 'An error occurred', code: code);
     }
     try {
       final dynamic jsonResponse = json.decode(response);
