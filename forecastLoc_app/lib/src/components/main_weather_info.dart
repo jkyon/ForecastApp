@@ -28,7 +28,7 @@ class MainWeatherInfo extends StatelessWidget {
   }
 
   Widget _weatherInfoWidget(BuildContext context) {
-    themeBloc..add(WeatherChanged(conditionIconId: state.weather.icon));
+    themeBloc.add(WeatherChanged(conditionIconId: state.weather.icon));
     return Stack(
       children: <Widget>[
         GradientBackground(iconId: state.weather.icon),

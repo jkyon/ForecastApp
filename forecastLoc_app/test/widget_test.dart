@@ -6,7 +6,7 @@ import 'package:forecast_app/src/models/models.dart';
 import 'package:mockito/mockito.dart';
 import 'package:kiwi/kiwi.dart' as kiwi;
 
-import 'mocks/app_mocks.dart';
+import 'app_mocks.dart';
 
 void main() {
   MockWeatherBloc mockWeatherBloc;
