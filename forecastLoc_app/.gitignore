@@ -4,6 +4,7 @@
 *.pyc
 *.swp
 *.lock
+*.properties
 .DS_Store
 .atom/
 .buildlog/
@@ -29,7 +30,6 @@
 .pub-cache/
 .pub/
 /build/
-.properties
 
 # Android related
 **/android/**/gradle-wrapper.jar
