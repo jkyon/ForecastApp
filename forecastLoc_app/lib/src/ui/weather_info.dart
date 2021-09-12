@@ -77,8 +77,8 @@ class WeatherInfo extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Expanded(
-                    child: Text(''),
                     flex: 1,
+                    child: Text(''),
                   ),
                   Text(
                     temperature,
@@ -93,8 +93,8 @@ class WeatherInfo extends StatelessWidget {
                     size: wp(10),
                   ),
                   Expanded(
-                    child: Text(''),
                     flex: 1,
+                    child: Text(''),
                   ),
                 ],
               ),
